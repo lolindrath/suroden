@@ -1,0 +1,77 @@
+03/18/06 - Lolindrath & wifey
+	* Converted code over to use generics
+	* Changed sex to gender
+	* Fixed a problem with improper handling of clients who forcibily disconnect.
+
+06/28/05 - Lolindrath
+	* Added opening and closing of doors
+
+02/03/05 - Lolindrath
+	* Added illegal name checking (i.e. swear words)
+	* Fixed a slight problem when switching a player from their temporary login body
+		to their permanent one, I forgot to switch over their InBuffer
+	* Added access levels to commands so you have to be an IMP to use shutdown/copyover
+
+12/16/04 - Lolindrath
+	* Fixed a bug in getLine() and stripNR() that caused telnet input not to be handled
+
+12/09/04 - Lolindrath
+	* Fixed command inputting for good this time (hopefully)
+	* RoomLists now use a Hashtable to ensure uniqueness (i.e. will crash if you try to insert a non unique UID)
+	* Added new player handling
+
+12/01/04 - Lolindrath
+	* Added GPL headers to all files
+
+02/18/04 Lolindrath
+* fixed a quick error when you type a command with a remaining space on the end ex. 'exit '
+
+10/29/03 Lolindrath
+* rewrote player saving/reading using IXmlSerializable
+* wrote saving/retrieving of the players CurrentRoom
+
+10/27/03 Lolindrath
+* reversed the ChangeLog order so newest is at the top.
+
+10/24/03 Lolindrath
+* Added a shutdown command so I could analyze with nprof.
+* Added code to show exits in look.
+* Added a very basic logger and inserted log messages at appropriate places.
+* got rid of the polling the listening socket for incoming connections, using TcpListener.Pending() instead
+
+10/23/03 Lolindrath
+* added the ability for players to invoke a save
+* added the ability for players to set their short description which is now displayed in 'who' and 'look'.
+* I created NUnit tests for CommandParser and implemented the getArguments() function
+* added the say command.
+
+10/22/03 Lolindrath
+* prevented user's from signing on more than once.
+* fixed the multiple command prompt thing for good this time. The MUD now sends the whole buffer along.
+
+10/21/03 Lolindrath
+* Made shortcuts for "ne", "nw", "se", "sw"
+
+10/20/03 Lolindrath
+* Only add someone into the room they should be in when they start playing
+* People can now see other people who are in the same room as them.
+
+10/19/03 Lolindrath
+* Had to move where the player prompt was added in, if the system has to do a partial
+  send it would attach a prompt for every send.
+* Added some formatting to the commands command to print them out in nice neat rows.
+* Fixed up the limited sending code, now everyone is limited to sending SEND_LEN worth of data at one time
+
+10/18/03 Lolindrath
+* Finished the class documentation catchup
+
+10/17/03 Lolindrath
+* Made a simple NAnt build script.
+* Made an NDoc script to autogenerate documentation
+* created the CommandList class which derives from ArrayList then moved findCommand here
+
+10/16/03 Lolindrath
+* Moved the DIR_ constants into their own class and made DIR_NAMES and DIR_REVERSE
+* Converted the directions over to use Room.writeAll
+* Added the "exits" command
+* Managed to roll all the NorthCommand, SouthCommand, etc. into MoveCommand

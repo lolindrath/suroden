@@ -1,0 +1,912 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C:\projects\Suroden\src\Suroden</name>
+    </assembly>
+    <members>
+        <member name="T:Suroden.Color">
+            <summary>
+            The Color class is a singleton that holds the ansi color sequences and the
+            translation table to convert player color codes into displayable ANSI
+            color.
+            </summary></member>
+        <member name="M:Suroden.Color.#ctor">
+            <summary>
+            The default constructor for Color sets up the colorTrans Hashtable.
+            </summary></member>
+        <member name="F:Suroden.Color.NORMAL">
+            <summary>This turns the colors back to the default</summary></member>
+        <member name="F:Suroden.Color.BOLD">
+            <summary>This makes the colors appear brighter</summary></member>
+        <member name="F:Suroden.Color.UNDERLINE">
+            <summary>This underlines the text</summary></member>
+        <member name="F:Suroden.Color.BLINK">
+            <summary>This makes the text blink. A horrible Death and life-long misfortune for those who use it!</summary></member>
+        <member name="F:Suroden.Color.REVERSE">
+            <summary>This flips the background and foreground colors.</summary></member>
+        <member name="F:Suroden.Color.INVIS">
+            <summary>You can't the text when you use this</summary></member>
+        <member name="F:Suroden.Color.BLACK">
+            <summary>Turns the foreground text color black</summary></member>
+        <member name="F:Suroden.Color.RED">
+            <summary>Turns the foreground text color red</summary></member>
+        <member name="F:Suroden.Color.GREEN">
+            <summary>Turns the foreground text color green.</summary></member>
+        <member name="F:Suroden.Color.YELLOW">
+            <summary>Turns the foreground text color yellow.</summary></member>
+        <member name="F:Suroden.Color.BLUE">
+            <summary>Turns the foreground text color blue.</summary></member>
+        <member name="F:Suroden.Color.MAGENTA">
+            <summary>Turns the foreground text color magenta.</summary></member>
+        <member name="F:Suroden.Color.CYAN">
+            <summary>Turns the foreground text color cyan.</summary></member>
+        <member name="F:Suroden.Color.WHITE">
+            <summary>turns the foreground text color white.</summary></member>
+        <member name="F:Suroden.Color.B_BLACK">
+            <summary>Turns the background text color black.</summary></member>
+        <member name="F:Suroden.Color.B_RED">
+            <summary>Turns the background text color red.</summary></member>
+        <member name="F:Suroden.Color.B_GREEN">
+            <summary>Turns the background text color green.</summary></member>
+        <member name="F:Suroden.Color.B_YELLOW">
+            <summary>Turns the background text color yellow.</summary></member>
+        <member name="F:Suroden.Color.B_BLUE">
+            <summary>Turns the background text color blue.</summary></member>
+        <member name="F:Suroden.Color.B_MAGENTA">
+            <summary>Turns the background text color magenta.</summary></member>
+        <member name="F:Suroden.Color.B_CYAN">
+            <summary>Turns the background text color cyan.</summary></member>
+        <member name="F:Suroden.Color.B_WHITE">
+            <summary>Turns the background text color white.</summary></member>
+        <member name="F:Suroden.Color.instance">
+            <summary>This is where the actual instance is kept</summary></member>
+        <member name="F:Suroden.Color.colorTrans">
+            <summary>
+            This Hashtable matches the player color sequence to it's ANSI color sequence.
+            </summary></member>
+        <member name="P:Suroden.Color.Instance">
+            <summary>
+            Instance retrieves the Singleton instance of the Color class
+            </summary>
+            <value>Returns the instance of the Color class to use.</value></member>
+        <member name="M:Suroden.Color.Convert(System.Text.StringBuilder,System.Boolean)">
+            <summary>
+            This takes the player colors like {x and {x and {y and turns them into
+            ANSI colors that are displayable to telnet clients.
+            </summary>
+            <param name="text">
+            This is the text to convert. If it contains player color sequences
+            They will be converted to ANSI codes.
+            </param>
+            <param name="AnsiOn">
+            If AnsiOn == false it well strip all the player sequences with nothing,
+            otherwise it will translate the color to ANSI color.
+            </param>
+            <returns>The translated text</returns></member>
+        <member name="T:Suroden.Area">
+            <summary>
+            This represents an area, a subsection of  the world.
+            </summary></member>
+        <member name="M:Suroden.Area.#ctor(System.String)">
+            <summary>
+            This reads in the area file and loads up all the room data.
+            </summary>
+            <param name="file">This is the area file to read from</param></member>
+        <member name="F:Suroden.Area.name">
+            <summary>The area's name.</summary></member>
+        <member name="F:Suroden.Area.roomList">
+            <summary>The list of rooms contained in the area.</summary></member>
+        <member name="P:Suroden.Area.Name">
+            <summary>
+            The area's name
+            </summary>
+            <value>a string containing the area's name.</value></member>
+        <member name="T:Suroden.BaseCommand">
+            <summary>
+            All commands in Suroden will inherit from this so they fit in the CommandList well
+            and so you can call doCommand or get the CommandVerb from any.
+            </summary></member>
+        <member name="M:Suroden.BaseCommand.#ctor(System.String)">
+            <summary>
+            This is the default(and only) constructor.
+            </summary></member>
+        <member name="F:Suroden.BaseCommand.commandVerb">
+            <summary>
+            This the the command verb (e.x. north, south, look, who)
+            </summary></member>
+        <member name="F:Suroden.BaseCommand.useLevel">
+            <summary>
+            Indicates at what level a player must be to use the command
+            </summary></member>
+        <member name="P:Suroden.BaseCommand.CommandVerb">
+            <summary>
+            The CommandVerb Property
+            </summary>
+            <value>Returns the CommandVerb of the specific instance of the command.</value></member>
+        <member name="M:Suroden.BaseCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            This is how the command is actually executed.
+            </summary>
+            <param name="p">The player who is executing the command</param>
+            <param name="cp">The CommandParser object for the command arguments sent.</param></member>
+        <member name="T:Suroden.CommandList">
+            <summary>
+            A specialized list to hold the Commands for Suroden.
+            </summary></member>
+        <member name="M:Suroden.CommandList.findCommand(System.String)">
+            <summary>
+            Does a case insensitive, partial match (e.x. no would match north)
+            of a player's input
+            </summary>
+            <param name="verb">the command verb to search for.</param>
+            <returns>The command found or null if no command was found.</returns></member>
+        <member name="T:Suroden.CommandParser">
+            <summary>
+            This class handles a players input and allows the programmer to parse
+            it out easily and efficiently.
+            </summary></member>
+        <member name="M:Suroden.CommandParser.#ctor(System.String)">
+            <summary>
+            The default constructor parses off the CommandVerb and then sets the
+            OrigArguments and RemainingArguments to everything after the CommandVerb.
+            </summary>
+            <param name="line">The input from the user.</param></member>
+        <member name="F:Suroden.CommandParser.commandVerb">
+            <summary>
+            The commandVerb is the first word in the input line (e.x. north, south, look, who)
+            </summary></member>
+        <member name="F:Suroden.CommandParser.origArguments">
+            <summary>
+            The original arguments are everything after the commandVerb on the input line.
+            </summary></member>
+        <member name="F:Suroden.CommandParser.remainingArguments">
+            <summary>
+            The remaining arguments are all the arguments not yet parsed.
+            </summary></member>
+        <member name="P:Suroden.CommandParser.CommandVerb">
+            <summary>
+            The CommandVerb is the first word in the input line
+            </summary>
+            <returns>The CommandVerb the user wants to execute</returns></member>
+        <member name="P:Suroden.CommandParser.Arguments">
+            <summary>
+            Returns the original arguments exactly as typed from the user.
+            </summary>
+            <value>A string of options the user would like to use the command.</value></member>
+        <member name="P:Suroden.CommandParser.RemainingArguments">
+            <summary>
+            Returns all the portion of the input line not yet parsed.
+            </summary>
+            <value>A string of the remaining arguments to parse</value></member>
+        <member name="M:Suroden.CommandParser.getArgument">
+            <summary>
+            Looks for the next space in the remainingArguments and grabs from the beginning
+            of that string to the space and returns it. It then sets the remainingArguments
+            to what is left to parse.
+            </summary>
+            <returns>The next unquoted argument</returns></member>
+        <member name="M:Suroden.CommandParser.getQuotedArgument">
+            <summary>
+            This function will check for a " in the zero position of the RemainingArguments
+            field. If it's found it will attempt to find the next ". If this isn't found it will
+            return from right after the " to the end of line. If no quote is found it returns nothing.
+            </summary>
+            <returns>The next quoted argument or nothing.</returns></member>
+        <member name="M:Suroden.CommandParser.resetArguments">
+            <summary>
+            Returns the argument parsing back to it's initial state.
+            </summary></member>
+        <member name="T:Suroden.Test.CommandParserTest">
+            <summary>
+            NUnit2 tests for the CommandParser
+            </summary></member>
+        <member name="F:Suroden.Test.CommandParserTest.cp">
+            <summary>the command parser variable to test against</summary></member>
+        <member name="M:Suroden.Test.CommandParserTest.TestCommandVerb">
+            <summary>test that the command verb gets set properly</summary></member>
+        <member name="M:Suroden.Test.CommandParserTest.TestArguments">
+            <summary>test that single word arguments work well</summary></member>
+        <member name="T:Suroden.ChatCommand">
+            <summary>
+            The chat command sends a message to all users, globally.
+            </summary></member>
+        <member name="M:Suroden.ChatCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.ChatCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            This gets the users message and passes it on to everyone currently
+            playing.
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.QuitCommand">
+            <summary>
+            This implements the quit command which prints a thankyou message and
+            kicks the user off the system.
+            </summary></member>
+        <member name="M:Suroden.QuitCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.QuitCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            This prints a thankyou message to the user then marks them
+            as trying to quit so the main loop can disconnect and delete them.
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.WhoCommand">
+            <summary>
+            This class implements the who command allowing a player to see who is online
+            at any given time.
+            </summary></member>
+        <member name="M:Suroden.WhoCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.WhoCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            This prints out a list of all the players currently signed on.
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.CommandsCommand">
+            <summary>
+            This class implements the commands command. It displays all the
+            current commands available to a user at this time.
+            </summary></member>
+        <member name="M:Suroden.CommandsCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.CommandsCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            This loops through the command list and prints all the commands
+            available for a player to use.
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.MoveCommand">
+            <summary>
+            This class generalizes all the moving commands. It takes care of
+            north, south, east, west, up, down, northeast, northwest, southeast, southwest.
+            </summary></member>
+        <member name="M:Suroden.MoveCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.MoveCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            This generalizes player movement by seeing what direction the specific
+            MoveCommand object was invoked for.
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.LookCommand">
+            <summary>
+            This class implements the look command which allows a player to
+            see the rooms description and who's in it.
+            </summary></member>
+        <member name="M:Suroden.LookCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.LookCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            This prints out the description and title of the room plus a list
+            of the players inside.
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.ExitsCommand">
+            <summary>
+            This class implements the exits command which displays all the possible
+            exits to a user.
+            </summary></member>
+        <member name="M:Suroden.ExitsCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.ExitsCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            This loops through all the exits for the room the player is currently
+            in and prints them.
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.SaveCommand">
+            <summary>
+            This command will serialize a player to their xml file so they can
+            reload from that state next time.
+            </summary></member>
+        <member name="M:Suroden.SaveCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.SaveCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            This invokes the serializer
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.ShortDescCommand">
+            <summary>
+            This allows players to set their own short description
+            </summary></member>
+        <member name="M:Suroden.ShortDescCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.ShortDescCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            set the short description
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.SayCommand">
+            <summary>
+            This will let one player talk directly to another player
+            </summary></member>
+        <member name="M:Suroden.SayCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.SayCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            set the short description
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.ShutdownCommand">
+            <summary>
+            This shuts the mud down
+            </summary></member>
+        <member name="M:Suroden.ShutdownCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.ShutdownCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            shutdown the mud properly
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.CopyoverCommand">
+            <summary>
+            This restarts the mud without players losing connections
+            </summary></member>
+        <member name="M:Suroden.CopyoverCommand.#ctor(System.String)">
+            <summary>
+            The default constructor calls the parent constructor.
+            </summary>
+            <param name="pCommandVerb">
+            The command verb that called this Command Object.
+            </param></member>
+        <member name="M:Suroden.CopyoverCommand.doCommand(Suroden.Player,Suroden.CommandParser)">
+            <summary>
+            shutdown the mud properly
+            </summary>
+            <param name="p">The player who invoked the command.</param>
+            <param name="cp">The options the player sent along.</param></member>
+        <member name="T:Suroden.Log">
+            <summary>
+            This class writes the log files out while also printing the messages to the Console
+            </summary></member>
+        <member name="M:Suroden.Log.#ctor">
+            <summary>
+            creates the log file name from the current date and opens up that new file.
+            </summary></member>
+        <member name="F:Suroden.Log.LOG_DIR">
+            <summary>where the logs reside</summary></member>
+        <member name="F:Suroden.Log.file">
+            <summary>the file handle we write to all the time</summary></member>
+        <member name="M:Suroden.Log.LogMessage(System.String,System.Object)">
+            <summary>
+            Append the log message to our open file handle in our nice format.
+            </summary>
+            <param name="level">the logging level</param>
+            <param name="message">the message to log</param></member>
+        <member name="M:Suroden.Log.Debug(System.Object)">
+            <summary>
+            Write a debug message to the log
+            Debug messages are mainly just for new development debugging.
+            </summary>
+            <param name="message">The message to log</param></member>
+        <member name="M:Suroden.Log.Info(System.Object)">
+            <summary>
+            Write an info message to the log
+            An info message updates the log on the current status of the mud.
+            (i.e. someone just signed on or the MUD just loaded an area from a file)
+            </summary>
+            <param name="message">The message to log</param></member>
+        <member name="M:Suroden.Log.Warn(System.Object)">
+            <summary>
+            Write a warning to the log
+            A warning should be something that is out of the ordinary but can
+            happen on a daily basis (i.e. a user attempts to sign on when he's already signed on)
+            </summary>
+            <param name="message">The message to log</param></member>
+        <member name="M:Suroden.Log.Error(System.Object)">
+            <summary>
+            Write an error to the log
+            An error is something that isn't going to cause a MUD crash in the long run
+            but still isn't something that the MUD should do normally.
+            </summary>
+            <param name="message">The message to log</param></member>
+        <member name="M:Suroden.Log.Fatal(System.Object)">
+            <summary>
+            This writes a fatal message to the log.
+            A fatal message should only be something that is going to cause
+            the MUDs untimely death almost instantly
+            </summary>
+            <param name="message">The message to log</param></member>
+        <member name="T:Suroden.Mob">
+            <summary>
+            Summary description for mob.
+            </summary></member>
+        <member name="T:Suroden.Mud">
+            <summary>
+            This is the over-arching object that contains everyone.
+            </summary></member>
+        <member name="M:Suroden.Mud.#ctor(System.Int32)">
+            <summary>
+            This is the main constructor for the Mud class
+            </summary>
+            <param name="pPort">The port to attach the Mud to</param></member>
+        <member name="F:Suroden.Mud.RECV_LEN">
+            <summary>Defines the recieve chunk size.</summary></member>
+        <member name="F:Suroden.Mud.IMM_LEVEL">
+            <summary>Indicates at which level a player is considered immortal</summary></member>
+        <member name="F:Suroden.Mud.IMP_LEVEL">
+            <summary>Indicates at which level a player is considered an implementor</summary></member>
+        <member name="F:Suroden.Mud.playerList">
+            <summary>The list of all players on the Mud currently.</summary></member>
+        <member name="F:Suroden.Mud.commandList">
+            <summary>The list of all available commands on the Mud.</summary></member>
+        <member name="F:Suroden.Mud.mudTcpListener">
+            <summary>The TcpListener that runs the joint.</summary></member>
+        <member name="F:Suroden.Mud.mudRunning">
+            <summary>This determines whether or not the Mud will keep running.</summary></member>
+        <member name="F:Suroden.Mud.ascii">
+            <summary>This is the ascii converter for outgoing data.</summary></member>
+        <member name="F:Suroden.Mud.port">
+            <summary>This holds the port the mud is currently connected to.</summary></member>
+        <member name="F:Suroden.Mud.worldSuroden">
+            <summary>This holds the whole world, containing all the areas and rooms.</summary></member>
+        <member name="F:Suroden.Mud.mudSuroden">
+            <summary>Here's the big man who runs the joint.</summary></member>
+        <member name="P:Suroden.Mud.MudRunning">
+            <summary>
+            This tracks whether the mud is actually running or not.
+            </summary>
+            <value>a boolean value telling whether the mud is running or not.</value></member>
+        <member name="P:Suroden.Mud.CommandList">
+            <summary>
+            Contains all the commands for the mud.
+            </summary>
+            <value>a list of all the commands in the mud.</value></member>
+        <member name="P:Suroden.Mud.PlayerList">
+            <summary>
+            Contains all the players currently connected to the mud.
+            </summary>
+            <value>a list of all the players connected to the mud.</value></member>
+        <member name="P:Suroden.Mud.WorldSuroden">
+            <summary>
+            The object that holds the representation of the world of Suroden
+            </summary>
+            <value>the world of Suroden</value></member>
+        <member name="M:Suroden.Mud.Main(System.String[])">
+            <summary>
+            The main entry point for the application.
+            </summary></member>
+        <member name="M:Suroden.Mud.Run(System.String[])">
+            <summary>
+            This is the workhorse function. All the sending and recieving of data
+            is done from here.
+            </summary></member>
+        <member name="M:Suroden.Mud.getSocket">
+            <summary>
+            This uses a very hacked way to get the socket out of the TcpClient so we can poll it.
+            </summary>
+            <returns>the socket corresponding to the TcpClient sent</returns></member>
+        <member name="M:Suroden.Mud.getLine(System.String,System.String@)">
+            <summary>
+            Retrieves a single line of input from the buffer.
+            </summary>
+            <param name="line">The incoming stream</param>
+            <param name="command">The single line found (returns through this)</param>
+            <returns>The remaining buffer, possbily less one line.</returns></member>
+        <member name="M:Suroden.Mud.stripNR(System.String)">
+            <summary>
+            Removes any new lines or returns from the beginning of a line
+            </summary>
+            <param name="line"></param>
+            <returns></returns></member>
+        <member name="M:Suroden.Mud.interpret(Suroden.Player,System.String)">
+            <summary>
+            Takes one line of input and passes it through the command parser, then
+            if it is a valid command it runs it for the user.
+            </summary>
+            <param name="p">the player who input the line</param>
+            <param name="line">the command line itself</param></member>
+        <member name="M:Suroden.Mud.writeAll(Suroden.Player,System.String,System.String)">
+            <summary>
+            Sends a message to everyone currently playing
+            </summary>
+            <param name="pWriter">Who wants to send the message</param>
+            <param name="everyone">The message to everyone but the writer</param>
+            <param name="you">The message to the writer.</param></member>
+        <member name="M:Suroden.Mud.loadCommands">
+            <summary>
+            This populates the CommandList with all the available commands
+            and their aliases on the Mud.
+            </summary></member>
+        <member name="M:Suroden.Mud.loadWorld">
+            <summary>
+            This kicks off the world loading process.
+            </summary></member>
+        <member name="M:Suroden.Mud.Shutdown">
+            <summary>
+            This runs through the shutdown process, gracefully kicking people
+            out and closing file connections, etc.
+            </summary></member>
+        <member name="T:Suroden.Object">
+            <summary>
+            Summary description for Object.
+            </summary></member>
+        <member name="T:Suroden.Player">
+            <summary>
+            The encapsulates all the fields a Player will need.
+            </summary></member>
+        <member name="M:Suroden.Player.#ctor">
+            <summary>
+            This constuctor sets up some of the basic defaults for the player fields
+            </summary></member>
+        <member name="M:Suroden.Player.#ctor(System.Net.Sockets.TcpClient)">
+            <summary>
+            This constructor calls the default and then setups the network
+            specific fields.
+            </summary>
+            <param name="tcp">The tcpClient had from the Accept() on our listening socket.</param></member>
+        <member name="F:Suroden.Player.PLAYER_DIR">
+            <summary>This is the path to the player directory</summary></member>
+        <member name="F:Suroden.Player.tcpClient">
+            <summary>The tcpClient object for the players connection</summary></member>
+        <member name="F:Suroden.Player.socket">
+            <summary>The socket for the players collection.</summary></member>
+        <member name="F:Suroden.Player.inBuffer">
+            <summary>The input buffer for a player.</summary></member>
+        <member name="F:Suroden.Player.outBuffer">
+            <summary>The output buffer for a player.</summary></member>
+        <member name="F:Suroden.Player.playerState">
+            <summary>The player's current state.</summary></member>
+        <member name="F:Suroden.Player.ansiOn">
+            <summary>Whether or not the player would like to use ANSI color</summary></member>
+        <member name="F:Suroden.Player.dirty">
+            <summary>Tells whether the player file needs saved or not</summary></member>
+        <member name="F:Suroden.Player.password">
+            <summary>The player's password</summary></member>
+        <member name="F:Suroden.Player.playerSex">
+            <summary>The player's established (physical) sex.</summary></member>
+        <member name="P:Suroden.Player.Stream">
+            <summary>
+            Returns the network stream for the tcpClient
+            </summary>
+            <value>the network stream for the tcpClient</value></member>
+        <member name="P:Suroden.Player.TcpClient">
+            <summary>
+            The TcpClient for the player
+            </summary>
+            <value>The TcpClient for the player</value></member>
+        <member name="P:Suroden.Player.Connected">
+            <summary>
+            tells whether or not the player is connected
+            </summary>
+            <value>returns whether or not the player is connected.</value></member>
+        <member name="P:Suroden.Player.InBuffer">
+            <summary>
+            gets and sets the incoming data buffer
+            </summary>
+            <value>the incoming data buffer</value></member>
+        <member name="P:Suroden.Player.OutBuffer">
+            <summary>
+            gets and sets the outgoing data buffer
+            </summary>
+            <value>the outgoing data buffer</value></member>
+        <member name="P:Suroden.Player.Password">
+            <summary>
+            gets or sets the players password
+            </summary>
+            <value>a string containing the players password.</value></member>
+        <member name="P:Suroden.Player.PlayerState">
+            <summary>
+            gets or sets the player's current state
+            </summary>
+            <value>the players state</value></member>
+        <member name="P:Suroden.Player.AnsiOn">
+            <summary>
+            gets or sets whether the player uses ANSI color or not
+            </summary>
+            <value>whether or not to use ANSI color</value></member>
+        <member name="P:Suroden.Player.PlayerSex">
+            <summary>
+            gets or sets the player's sex
+            </summary></member>
+        <member name="M:Suroden.Player.getSocket(System.Net.Sockets.TcpClient)">
+            <summary>
+            This uses a very hacked way to get the socket out of the TcpClient so we can poll it.
+            </summary>
+            <param name="c">The TcpClient to get the Socket from.</param>
+            <returns>the socket corresponding to the TcpClient sent</returns></member>
+        <member name="M:Suroden.Player.canWrite">
+            <summary>
+            Decides whether or not the socket and be written to.
+            </summary>
+            <returns>whether or not the socket can be written to.</returns></member>
+        <member name="M:Suroden.Player.canRead">
+            <summary>
+            Decides whether or not we can read from the socket.
+            </summary>
+            <returns>whether or not the socket can be read.</returns></member>
+        <member name="M:Suroden.Player.canError">
+            <summary>
+            Decides whether or not the socket is in an erroneous state.
+            </summary>
+            <returns>whether or not the socket is in an errorneous state.</returns></member>
+        <member name="M:Suroden.Player.Save">
+            <summary>
+            Serializes the player file to Xml
+            </summary></member>
+        <member name="M:Suroden.Player.AppendInBuffer(System.String)">
+            <summary>
+            Appends text to the incoming data buffer for the user
+            </summary>
+            <param name="line">text to append</param></member>
+        <member name="M:Suroden.BinaryPriorityQueue`1.Push(`0)">
+            <summary>
+            Push an object onto the PQ
+            </summary>
+            <param name="O">The new object</param>
+            <returns>The index in the list where the object is _now_. This will change when objects are taken from or put onto the PQ.</returns></member>
+        <member name="M:Suroden.BinaryPriorityQueue`1.Pop">
+            <summary>
+            Get the smallest object and remove it.
+            </summary>
+            <returns>The smallest object</returns></member>
+        <member name="M:Suroden.BinaryPriorityQueue`1.Update(System.Int32)">
+            <summary>
+            Notify the PQ that the object at position i has changed
+            and the PQ needs to restore order.
+            Since you dont have access to any indexes (except by using the
+            explicit IList.this) you should not call this function without knowing exactly
+            what you do.
+            </summary>
+            <param name="i">The index of the changed object.</param></member>
+        <member name="M:Suroden.BinaryPriorityQueue`1.Peek">
+            <summary>
+            Get the smallest object without removing it.
+            </summary>
+            <returns>The smallest object</returns></member>
+        <member name="T:Suroden.Reset">
+            <summary>
+            Summary description for reset.
+            </summary></member>
+        <member name="T:Suroden.Directions">
+            <summary>
+            This is a little static helper class to keep track of the available exits.
+            </summary></member>
+        <member name="M:Suroden.Directions.#ctor">
+            <summary>
+            The default constructor basically just initializes the NamesToDir Hashtable
+            </summary></member>
+        <member name="F:Suroden.Directions.MAX_DIR">
+            <summary>This defines the maximum number of directions.</summary></member>
+        <member name="F:Suroden.Directions.DIR_UP">
+            <summary>The definition of up.</summary></member>
+        <member name="F:Suroden.Directions.DIR_DOWN">
+            <summary>The definition of down.</summary></member>
+        <member name="F:Suroden.Directions.DIR_NORTH">
+            <summary>The definition of north.</summary></member>
+        <member name="F:Suroden.Directions.DIR_SOUTH">
+            <summary>The definition of south.</summary></member>
+        <member name="F:Suroden.Directions.DIR_EAST">
+            <summary>The definition of east.</summary></member>
+        <member name="F:Suroden.Directions.DIR_WEST">
+            <summary>The definition of west.</summary></member>
+        <member name="F:Suroden.Directions.DIR_NORTHEAST">
+            <summary>The definition of northeast.</summary></member>
+        <member name="F:Suroden.Directions.DIR_NORTHWEST">
+            <summary>The definition of northwest.</summary></member>
+        <member name="F:Suroden.Directions.DIR_SOUTHEAST">
+            <summary>The definition of southeast.</summary></member>
+        <member name="F:Suroden.Directions.DIR_SOUTHWEST">
+            <summary>The definition of southwest.</summary></member>
+        <member name="F:Suroden.Directions.DIR_NAMES">
+            <summary>
+            If you pass this your DIR_* number it will give you the string that matches that name.
+            </summary></member>
+        <member name="F:Suroden.Directions.DIR_REVERSE">
+            <summary>
+            If you pass this your DIR_* number it will find the exact opposite (e.x. if you're facing
+            north it'll pick south).
+            </summary></member>
+        <member name="F:Suroden.Directions.namesToDir">
+            <summary>
+            This takes the name of a directory and translates it back to the number
+            </summary></member>
+        <member name="P:Suroden.Directions.NamesToDir">
+            <summary>
+            This takes the name of a directory and translates it back to the number
+            </summary>
+            <value>Returns the Hashtable that maps a name to the DIR_* number.</value></member>
+        <member name="T:Suroden.Room">
+            <summary>
+            Room represents one square of land in the world that a player, mobs and objects
+            can occupy.
+            </summary></member>
+        <member name="M:Suroden.Room.#ctor">
+            <summary>
+            The default constructor wipes the Exits and TempExits clean.
+            </summary></member>
+        <member name="F:Suroden.Room.uID">
+            <summary>The unique ID</summary></member>
+        <member name="F:Suroden.Room.title">
+            <summary>The room title</summary></member>
+        <member name="F:Suroden.Room.description">
+            <summary>The room description</summary></member>
+        <member name="F:Suroden.Room.parentArea">
+            <summary>The parent area's information.</summary></member>
+        <member name="F:Suroden.Room.exits">
+            <summary>Links to the adjecent rooms.</summary></member>
+        <member name="F:Suroden.Room.tempExits">
+            <summary>Temporary links that hold the UID's of the adjecent rooms and are later translated into References</summary></member>
+        <member name="F:Suroden.Room.containedList">
+            <summary>A list of the players that are currently in this room.</summary></member>
+        <member name="P:Suroden.Room.UID">
+            <summary>
+            This retrieves the UID
+            </summary>
+            <value>returns a string with the room's unique ID in it.</value></member>
+        <member name="P:Suroden.Room.Title">
+            <summary>
+            Retrieves the rooms title.
+            </summary>
+            <value>returns a string containing the summarized room title</value></member>
+        <member name="P:Suroden.Room.Description">
+            <summary>
+            The rooms description
+            </summary>
+            <value>This contains a multi-line string that describes a room in more detail than the title.</value></member>
+        <member name="P:Suroden.Room.ParentArea">
+            <summary>
+            Represents the area the room is in.
+            </summary>
+            <value>returns the area the room is in.</value></member>
+        <member name="P:Suroden.Room.Exits">
+            <summary>
+            Represents the Room Links to the adjecent rooms
+            </summary>
+            <value>returns an array keyed on the Directions.DIR_* numbers</value></member>
+        <member name="P:Suroden.Room.TempExits">
+            <summary>
+            Represents the temporary UID links to the rooms.
+            </summary>
+            <value>returns an array keyed on the Directions.DIR_* numbers</value></member>
+        <member name="P:Suroden.Room.ContainedList">
+            <summary>
+            Returns a list of players currently inside this room
+            </summary>
+            <value>Returns a list of players currently inside this room.</value></member>
+        <member name="M:Suroden.Room.ToString">
+            <summary>
+            This prints out a summarized bit of text about the room
+            mostly for debugging purposes.
+            </summary>
+            <returns>A string containing all the summarized data in a room</returns></member>
+        <member name="M:Suroden.Room.WriteAll(Suroden.Player,System.String,System.String)">
+            <summary>
+            Send a message to everyone in the room except the target, then send
+            a customized message to the target.
+            </summary>
+            <param name="pWriter">The target of the message, the person who's writing the action.</param>
+            <param name="everyone">The message that should go to everyone in the room, except the pWriter</param>
+            <param name="you">The message for just the pWriter.</param></member>
+        <member name="T:Suroden.Thing">
+            <summary>
+            Summary description for thing.
+            </summary></member>
+        <member name="T:Suroden.TimerAction">
+            <summary>
+            Summary description for TimerAction.
+            </summary></member>
+        <member name="T:Suroden.TimerRegistry">
+            <summary>
+            Summary description for TimerRegister.
+            </summary></member>
+        <member name="T:Suroden.World">
+            <summary>
+            The world contains all the area's that make up the world
+            </summary></member>
+        <member name="M:Suroden.World.#ctor">
+            <summary>
+            Initializes the fields.
+            </summary></member>
+        <member name="P:Suroden.World.RoomList">
+            <summary>
+            The list of all rooms in the world
+            </summary>
+            <value>the list of all rooms in the world.</value></member>
+        <member name="M:Suroden.World.Load(System.String)">
+            <summary>
+            Reads in the area file and makes the area's load themselves.
+            </summary>
+            <param name="file">the world file to load</param></member>
+        <member name="M:Suroden.World.FixExits">
+            <summary>
+            This turns the TempExits into real Exits (references to rooms)
+            </summary>
+            <remarks>
+            We can't do this right away, it has to be done after the load process
+            since we can't guarentee that every room will exist.
+            </remarks></member>
+        <member name="T:Suroden.PlayerStates">
+            <summary>
+            This enum describes the current state a player is in.
+            </summary></member>
+        <member name="F:Suroden.PlayerStates.Quitting">
+            <summary>A player is in the process of being removed from the system.</summary></member>
+        <member name="F:Suroden.PlayerStates.LoggingIn">
+            <summary>A player is sitting at the Name: prompt</summary></member>
+        <member name="F:Suroden.PlayerStates.Playing">
+            <summary>A player is currently in the world in a fully cognitive state.</summary></member>
+        <member name="F:Suroden.PlayerStates.NewPlayer">
+            <summary>A new player just starting out</summary></member>
+        <member name="F:Suroden.PlayerStates.EnteringPassword">
+            <summary>A player is sitting at the Password: prompt</summary></member>
+        <member name="T:Suroden.Sex">
+            <summary>
+            This describes all the possible sexes a player may have
+            </summary></member>
+        <member name="F:Suroden.Sex.Neutral">
+            <summary>the player's sex is neutral</summary></member>
+        <member name="F:Suroden.Sex.Female">
+            <summary>the player's sex is female</summary></member>
+        <member name="F:Suroden.Sex.Male">
+            <summary>the player's sex is male</summary></member>
+    </members>
+</doc>

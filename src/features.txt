@@ -1,0 +1,104 @@
+Possible Feature List:
+Network Layer
+
+Commands
+  * associated level
+  * abbreviations -> lol translates into lolindrath
+
+Objects
+  * weight associated with each
+  * player inventory -> pickup & drop -> save in pfile
+  * Amounts of mana related to an object so that a flaming sword won't flame forever, just till mana runs out
+  * objects can sustain damage during combat so a sword will become battered and eventually useless
+  * wearable
+    - armor
+    - weapons
+  * edible
+    - food
+    - drink
+  * containing other objects (bags)
+  * money
+  * renaming of equipment (done by armorer at a cost)
+  * Material types -> immunities and protection from them
+
+Rooms
+  * Doors open/close 
+  * locks on doors
+  * door size
+  * bash door
+
+Players 
+  * can only carry a limited weight
+  * type in commands that can support quotes
+  * player commands have different levels of permissions
+  * admins have lots of commands to manipulate the world
+  * swimming
+  * falling
+  * can setup a shorthand for a longer command (ex. fb would translate to 'cast fireball')
+  * Immortals
+    - Avatar - immortals can make themselves a specific level for testing purposes
+  * PK
+    - Must set your PK flag to on and you can't turn it back off
+    - Only after a certain Level
+  * Levels
+    - based on experience gained
+  * Grouping (share exp. and gold)
+
+Combat
+  * target certain body areas
+  * ranged weapons
+  * types of damage (and protection from)
+  * wield two weapons at once
+  * weapon specialties (more you use axes the better you get at them)
+  * shield bash with spiked shields does extra damage
+  * traps
+  * Spells
+      - blind, cripple, deafen, mute
+      - types of damage (and protection from)
+      - anti-magic zones
+      - traps
+      - gems -> stored mana
+      - warp stones
+      - portals
+  * Skills
+    - Healing herbs/plants & Potions & Scrolls
+    - brew/scribe/prepare herbs
+    - Tracking
+
+Mobiles
+  * Using mobs as spies
+  * ridable
+  
+Shops/Pet Shops
+  * finite inventory
+
+Ships
+  * Currents to push you around (faster?)
+  * things to do on the ship
+
+Help system
+  
+Bulletin Boards
+
+Bounty System
+  * put a price on someones head, when that person gets PK'ed the killer gets the price 
+    (should take the gold from player when they type the command) keep list of bounties
+  * hire a mob bounty hunter to track someone down and kill them
+
+Communication
+  * no global communication -> must be fast to find adjecent rooms (up to depth n)
+  * say/shout/yell/scream 
+  * speech stones speak to someone across a continent
+  * introduction system -> don't know someone's name until  you've actually talked to them
+  
+Lighting
+
+Weather - by area? by continent
+
+Diety worship
+  * sacrifice with usual rewards
+
+Races/Classes
+  * Class/race specific EQ
+
+Casinoes and other in-MUD games

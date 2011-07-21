@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!ELEMENT Area (AreaData,Room+)>
+<!ELEMENT AreaData (AreaName)>
+<!ELEMENT AreaName (#PCDATA)>
+
+<!ELEMENT Room (UID,Title,Description,Exits*)>
+<!ELEMENT UID (#PCDATA)>
+<!ELEMENT Title (#PCDATA)>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT Exits (Up?,Down?,North?,South?,East?,West?,NorthEast?,NorthWest?,SouthEast?,SouthWest?)>
+
+<!ELEMENT Up (#PCDATA)>
+<!ELEMENT Down (#PCDATA)>
+<!ELEMENT North (#PCDATA)>
+<!ELEMENT South (#PCDATA)>
+<!ELEMENT East (#PCDATA)>
+<!ELEMENT West (#PCDATA)>
+<!ELEMENT NorthEast (#PCDATA)>
+<!ELEMENT NorthWest (#PCDATA)>
+<!ELEMENT SouthEast (#PCDATA)>
+<!ELEMENT SouthWest (#PCDATA)>

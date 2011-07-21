@@ -1,0 +1,160 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B0C229D8-7DD7-48FB-AEE5-FF7045289066}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>SurodenSolution</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Suroden</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ansicolor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="area.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BadNameList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="basecommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="commandlist.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="commandparser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="commands.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="log.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MersenneTwister.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mob.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mud.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="object.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="player.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PriorityQueue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="reset.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="room.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="thing.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TimerAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TimerRegister.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="world.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="ChangeLog.txt" />
+    <EmbeddedResource Include="features.txt" />
+    <EmbeddedResource Include="GPL.txt" />
+    <EmbeddedResource Include="TODO.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

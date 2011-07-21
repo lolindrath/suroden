@@ -1,0 +1,17 @@
+Suroden TODO:
+
+* Check XML for specific formatting (ex. UID can't be blank, print error to console with line number)
+* Find standard way to do public/private variables and place constructors, methods and properties in a standard way in the code
+* Coding guidelines (properties, private variables, method naming, brackets, argument naming)
+* limit characters allowed in passwords 
+* Put a max input and output buffer size check in and flush part of the old buffer if they go over
+* mask password when entering
+* track playing time
+* command to change password
+* long descriptions plus setting them. (this also means a long string editor)
+* player settable options (for autoexits)
+
+X make sure player's don't use crude words for names or . or .. or ../ or ./
+X limit characters and words allowed in player names
+X Actually check for UID uniqueness (use a hashtable)
+X New Player handling!

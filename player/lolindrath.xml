@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Player>
+  <Name>Lolindrath</Name>
+  <Password>password</Password>
+  <PlayerGender>Male</PlayerGender>
+  <ShortDesc> Lord of Decay</ShortDesc>
+  <CurrentRoom>Test6</CurrentRoom>
+  <Level>1000</Level>
+</Player>

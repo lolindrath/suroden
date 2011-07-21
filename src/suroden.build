@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<project name="Suroden" default="build">
+	<property name="debug" value="true"/>
+	
+	<target name="clean" description="remove all generated files">
+		<delete file="Suroden.exe" failonerror="false"/>
+		<delete file="Suroden.pdb" failonerror="false"/>
+	</target>
+	
+	<target name="build" depends="clean" description="compiles the source code">
+		<csc target="exe" output="Suroden.exe" debug="${debug}" doc="Suroden.xml">
+			<sources>
+				<!-- Keep this in alpha order! -->
+				<include name="ansicolor.cs"/>
+				<include name="area.cs"/>
+				<include name="BadNameList.cs"/>
+				<include name="basecommand.cs"/>
+				<include name="commandlist.cs"/>
+				<include name="commandparser.cs"/>
+				<include name="commandparsertest.cs"/>
+				<include name="commands.cs"/>
+				<include name="log.cs"/>
+				<include name="MersenneTwister.cs"/>
+				<include name="mob.cs"/>
+				<include name="mud.cs"/>
+				<include name="object.cs"/>
+				<include name="player.cs"/>
+				<include name="priorityqueue.cs"/>
+				<include name="reset.cs"/>
+				<include name="room.cs"/>
+				<include name="thing.cs"/>
+				<include name="TimerAction.cs"/>
+				<include name="TimerRegister.cs"/>
+				<include name="world.cs"/>
+			</sources>
+			<references>
+					<include name="nunit.framework.dll"/>
+					<include name="IronMath.dll"/>
+					<include name="IronPython.dll"/>
+					<include name="System.Collections.dll"/>
+					<include name="System.Collections.Generic.dll"/>
+			</references>
+		</csc>
+		<!-- <call target="test"/>
+		<call target="doc"/> -->
+	</target>
+	
+	<target name="doc" description="runs ndoc to create documentation for the project">
+		<exec program="document.bat" basedir="."/>
+	</target>
+	
+	<target name="test" description="run nunit2 tests on suroden">
+		<nunit2>
+				<formatter type="Plain"/>
+				<test assemblyname="suroden.exe"/>
+		</nunit2>
+	</target>
+</project>

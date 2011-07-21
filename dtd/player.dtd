@@ -1,0 +1,5 @@
+<?xml encoding="ISO-8859-1" ?>
+
+<!ELEMENT Player (Name,Password)>
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT Password (#PCDATA)>

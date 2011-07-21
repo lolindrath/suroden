@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE Area SYSTEM "../dtd/area.dtd">
+
+<Area>
+	<AreaData>
+		<AreaName>Testing Area</AreaName>
+	</AreaData>
+	
+	<Rooms>
+		<Room>
+			<UID>Test1</UID>
+			<Title>Test Room 1</Title>
+			<Description>
+				This is the description for the first testing room.
+				As you can see there are exits out to every direction possible.
+				There also appears to be a trapdoor on the floor, make sure you
+				try to open that.
+			</Description>
+			<Exits>
+				<Up uid="Test10"/>
+				<Down uid="Test11">
+					<DoorState>Closed</DoorState>
+				</Down>
+				<North uid="Test6"/>
+				<South uid="Test2"/>
+				<East uid="Test4"/>
+				<West uid="Test8"/>
+				<NorthEast uid="Test5"/>
+				<NorthWest uid="Test7"/>
+				<SouthEast uid="Test3"/>
+				<SouthWest uid="Test9"/>
+			</Exits>
+		</Room>
+		
+		<Room>
+			<UID>Test2</UID>
+			<Title>Test Room 2</Title>
+			<Description>
+			You're in the second test room. Not quite as cool as the first but still 
+			pretty narly. Keep wandering around d00d.
+			</Description>
+			<Exits>
+				<North uid="Test1"/>
+				<East uid="Test3"/>
+				<West uid="Test9"/>
+			</Exits>
+		</Room>
+
+		<Room>
+			<UID>Test3</UID>
+			<Title>Test Room 3</Title>
+			<Description>
+			{o{rHere's an incredibly long room description so I can test network IO. Eventually
+			I can use this to check on how well word wrapping works also. But for now this is all
+			about the networking. I'm allowing people to only send up to a 1024 byte chunk (this is a constant
+			incase I want it to be smaller) to be fair to everyone. I found out after I put the room that
+			I had nothing that was 1024 characters long to test with so here we are!. Oops, this is only like
+			500 characters long. I think I'm just going to change the send_len.{x
+			</Description>
+			<Exits>
+				<North uid="Test4"/>
+				<West uid="Test2"/>
+				<NorthWest uid="Test1"/>
+			</Exits>
+		</Room>
+
+		<Room>
+			<UID>Test4</UID>
+			<Title>Test Room 4</Title>
+			<Description></Description>
+			<Exits>
+				<North uid="Test5"/>
+				<South uid="Test3"/>
+				<West uid="Test1"/>
+			</Exits>
+		</Room>
+
+		<Room>
+			<UID>Test5</UID>
+			<Title>Test Room 5</Title>
+			<Description></Description>
+			<Exits>
+				<South uid="Test4"/>
+				<West uid="Test6"/>
+				<SouthWest uid="Test1"/>
+			</Exits>
+		</Room>
+
+		<Room>
+			<UID>Test6</UID>
+			<Title>Test Room 6</Title>
+			<Description></Description>
+			<Exits>
+				<South uid="Test1"/>
+				<East uid="Test5"/>
+				<West uid="Test7"/>
+			</Exits>
+		</Room>
+
+		<Room>
+			<UID>Test7</UID>
+			<Title>Test Room 7</Title>
+			<Description></Description>
+			<Exits>
+				<South uid="Test8"/>
+				<East uid="Test6"/>
+				<SouthEast uid="Test1"/>
+			</Exits>
+		</Room>
+		<Room>
+			<UID>Test8</UID>
+			<Title>Test Room 8</Title>
+			<Description></Description>
+			<Exits>
+				<North uid="Test7"/>
+				<South uid="Test9"/>
+				<East uid="Test1"/>
+			</Exits>
+		</Room>
+		<Room>
+			<UID>Test9</UID>
+			<Title>Test Room 9</Title>
+			<Description></Description>
+			<Exits>
+				<North uid="Test8"/>
+				<East uid="Test2"/>
+				<NorthEast uid="Test1"/>
+			</Exits>
+		</Room>
+		<Room>
+			<UID>Test10</UID>
+			<Title>Test Room 10</Title>
+			<Description></Description>
+			<Exits>
+				<Down uid="Test1"/>
+			</Exits>
+		</Room>
+		<Room>
+			<UID>Test11</UID>
+			<Title>Test Room 11</Title>
+			<Description></Description>
+			<Exits>
+				<Up uid="Test1">
+					<DoorState>Closed</DoorState>
+				</Up>
+			</Exits>
+		</Room>
+	</Rooms>
+
+	<Mobs>
+		<Mob>
+			<UID>Rat1</UID>
+			<Name>rat</Name>
+			<ShortDesc>a large rat</ShortDesc>
+			<Level>1</Level>
+		</Mob>
+	</Mobs>
+
+	<Objects>
+		<Object>
+			<UID>Sword1</UID>
+			<Name>Sword</Name>
+			<ShortDesc>a sword lies here, its very shiny and sharp</ShortDesc>
+			<Level>1</Level>
+		</Object>
+		<Object>
+			<UID>Chest1</UID>
+			<Name>Chest</Name>
+			<ShortDesc>a chest is here, its big, wooden, and heavy</ShortDesc>
+			<Level>1</Level>
+		</Object>
+	</Objects>
+
+	<Resets>
+		<Mob>
+			<UID>Rat1</UID>
+			<Room>Test1</Room>
+			<AreaLimit>1</AreaLimit>
+			<GlobalLimit>10</GlobalLimit>
+			<Give>Sword1</Give>
+			<Equip>
+				<Slot>Head</Slot>
+				<Helmet>Helmet1</Helmet>
+			</Equip>
+		</Mob>
+		<Object>
+			<UID>Chest1</UID>
+			<Room>Test1</Room>
+			<AreaLimit>1</AreaLimit>
+			<Put>Sword1</Put>
+		</Object>
+	</Resets>
+</Area>
